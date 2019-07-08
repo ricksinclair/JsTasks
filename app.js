@@ -83,7 +83,7 @@ function addTask(e) {
 
   //CLear input value
   taskInput.value = "";
-  console.log(li);
+  // console.log(li);
   e.preventDefault();
 }
 function storeTaskInLocalStorage(task) {
@@ -100,12 +100,12 @@ function storeTaskInLocalStorage(task) {
 //Remove Tasks
 function removeTask(e) {
   if (e.target.parentElement.classList.contains("delete-item")) {
-    console.log(e.target);
+    // console.log(e.target);
     if (confirm("are you sure? This CANNOT be undone!")) {
       e.target.parentElement.parentElement.remove();
 
       //Remove from local storage
-      console.log(e.target.parentElement.parentElement);
+      // console.log(e.target.parentElement.parentElement);
       removeTaskFromLocalStorage(e.target.parentElement.parentElement);
     }
   }
@@ -113,8 +113,8 @@ function removeTask(e) {
 }
 //Remove from local storage
 function removeTaskFromLocalStorage(taskItem) {
-  console.log("task item text content is: " + taskItem);
-  console.log(taskItem + " task item");
+  // console.log("task item text content is: " + taskItem);
+  // console.log(taskItem + " task item");
   let tasks;
   if (localStorage.getItem("tasks") === null) {
     tasks = [];
@@ -124,13 +124,13 @@ function removeTaskFromLocalStorage(taskItem) {
 
   console.log(tasks);
   tasks.forEach(function(task, index) {
-    console.log("index is: " + index);
+    // console.log("index is: " + index);
     if (taskItem.textContent == task) {
       // index = tasks.indexOf(task);
-      console.log("task at index: " + index + " is a match");
+      // console.log("task at index: " + index + " is a match");
       tasks.splice(index, 1);
     } else {
-      console.log("task at index: " + "index is not a match");
+      // console.log("task at index: " + "index is not a match");
     }
   });
   console.log(tasks);
@@ -160,7 +160,7 @@ function clearTasksFromLocalStorage() {
 //Filter tasks
 function filterTasks(e) {
   const text = e.target.value.toLowerCase();
-  console.log(text);
+  // console.log(text);
   //The below returns a node list
   //If we use document.getElementByClass would return an html collection (which we'd have to convert to an array)
   document.querySelectorAll(".collection-item").forEach(function(task) {
@@ -172,5 +172,5 @@ function filterTasks(e) {
     }
   });
   e.preventDefault();
-  console.log("testing testing 123");
+  // console.log("testing testing 123");
 }
