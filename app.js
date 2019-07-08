@@ -122,7 +122,7 @@ function removeTaskFromLocalStorage(taskItem) {
     tasks = JSON.parse(localStorage.getItem("tasks"));
   }
 
-  console.log(tasks);
+  // console.log(tasks);
   tasks.forEach(function(task, index) {
     // console.log("index is: " + index);
     if (taskItem.textContent == task) {
