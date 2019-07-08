@@ -133,7 +133,7 @@ function removeTaskFromLocalStorage(taskItem) {
       // console.log("task at index: " + "index is not a match");
     }
   });
-  console.log(tasks);
+  // console.log(tasks);
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 //Clear Tasks
