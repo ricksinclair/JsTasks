@@ -94,4 +94,5 @@ function filterTasks(e) {
     }
   });
   e.preventDefault();
+  console.log("testing testing 123");
 }
