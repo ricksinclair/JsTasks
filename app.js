@@ -32,23 +32,24 @@ function getTasks() {
   } else {
     tasks = JSON.parse(localStorage.getItem("tasks"));
   }
-  tasks.push(task);
-  localStorage.setItem("tasks", JSON.stringify(tasks));
 
-  //Create li element
-  const li = document.createElement("li");
-  //Add class
-  li.className = "collection-item";
-  //Create text node and append to the li
-  li.appendChild(document.createTextNode(task));
-  //Create new link element
-  const link = document.createElement("a");
-  //add class
-  link.className = "delete-item secondary-content";
-  //Add icon html
-  link.innerHTML = '<i class="fa fa-remove" ></i>';
-  //Append the link to li
-  li.appendChild(link);
+  tasks.forEach(function(task) {
+    //Create li element
+    const li = document.createElement("li");
+    //Add class
+    li.className = "collection-item";
+    //Create text node and append to the li
+    li.appendChild(document.createTextNode(task));
+    //Create new link element
+    const link = document.createElement("a");
+    //add class
+    link.className = "delete-item secondary-content";
+    //Add icon html
+    link.innerHTML = '<i class="fa fa-remove" ></i>';
+    //Append the link to li
+    li.appendChild(link);
+    taskList.appendChild(li);
+  });
 }
 
 //Add Task
@@ -104,6 +105,7 @@ function removeTask(e) {
       e.target.parentElement.parentElement.remove();
 
       //Remove from local storage
+      console.log(e.target.parentElement.parentElement);
       removeTaskFromLocalStorage(e.target.parentElement.parentElement);
     }
   }
@@ -111,6 +113,8 @@ function removeTask(e) {
 }
 //Remove from local storage
 function removeTaskFromLocalStorage(taskItem) {
+  console.log("task item text content is: " + taskItem);
+  console.log(taskItem + " task item");
   let tasks;
   if (localStorage.getItem("tasks") === null) {
     tasks = [];
@@ -118,13 +122,19 @@ function removeTaskFromLocalStorage(taskItem) {
     tasks = JSON.parse(localStorage.getItem("tasks"));
   }
 
-  tasks.forEach(function(task) {
-    if (taskItem.textcontent === task) {
+  console.log(tasks);
+  tasks.forEach(function(task, index) {
+    console.log("index is: " + index);
+    if (taskItem.textContent == task) {
+      // index = tasks.indexOf(task);
+      console.log("task at index: " + index + " is a match");
       tasks.splice(index, 1);
+    } else {
+      console.log("task at index: " + "index is not a match");
     }
   });
-
-  localStorage.setItem("tasks", json.stringify(tasks));
+  console.log(tasks);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 //Clear Tasks
 function clearTasks(e) {
