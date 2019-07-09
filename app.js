@@ -124,7 +124,7 @@ function removeTaskFromLocalStorage(taskItem) {
 
   // console.log(tasks);
   tasks.forEach(function(task, index) {
-    // console.log("index is: " + index);
+    console.log("index is: " + index);
     if (taskItem.textContent == task) {
       // index = tasks.indexOf(task);
       // console.log("task at index: " + index + " is a match");
